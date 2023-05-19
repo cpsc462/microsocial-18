@@ -25,6 +25,7 @@
  *         - id
  *         - name
  *         - password
+ *         - tou
  *       properties:
  *         id:
  *           type: integer
@@ -42,13 +43,18 @@
  *           minLength: 4
  *           format: password
  *           description: No leading or trailing spaces. Never returned by an API.
+ *         tou:
+ *          type: integer
+ *          minimum: 1
+ *          readOnly: true
+ *          description: The newest version of the terms of use that the user has accepted.
  *         uri:
  *           type: string
  *           readOnly: true
  *           format: password
  *           description: URI to this object. Set by API at User creation.
  *       examples: [
- *         { id: 1, name: "alonzo", password: "lambda", uri: "http://lh:8/user/14" }
+ *         { id: 1, name: "alonzo", password: "lambda", tou = 1, uri: "http://lh:8/user/14" }
  *       ]
  * 
  *     LoginInfo:
@@ -134,6 +140,7 @@
  *       required:
  *         - name
  *         - password
+ *         - tou
  *       properties:
  *         name:
  *           type: string
@@ -146,8 +153,12 @@
  *           minLength: 4
  *           format: password
  *           description: Guess. No leading or trailing spaces. Never returned by an API.
+ *         tou:
+ *           type: integer
+ *           minimum: 1
+ *           description: The newest version of the terms of use that the user has accepted.
  *       examples: [
- *         { name: "alonzo", password: "lambda" }
+ *         { name: "alonzo", password: "lambda", tou: 1 }
  *       ]
  * 
  * 
@@ -157,6 +168,7 @@
  *       required:
  *         - name
  *         - password
+ *         - tou
  *       properties:
  *         name:
  *           type: string
@@ -169,9 +181,12 @@
  *           minLength: 4
  *           format: password
  *           description: Guess. No leading or trailing spaces. Never returned by an API. description Columns to sort by, separated by commas. Names are case-insensitive. Sorts are ascending unless a "-" is given. "+" is accepted but is unnecessary. Acceptable columns are id and name.
-
+ *         tou: 
+ *           type: integer
+ *           minimum: 1
+ *           description: The newest version of the terms of use that the user has accepted. 
  *       examples: [
- *         { name: "alonzo", password: "lambda" }
+ *         { name: "alonzo", password: "lambda", tou: 1 }
  *         ]
  * 
  *     PatchingUser:
@@ -188,8 +203,12 @@
  *           minLength: 4
  *           format: password
  *           description: Guess. No leading or trailing spaces. Never returned by an API.
+ *         tou: 
+ *           type: integer
+ *           minimum: 1
+ *           description: The newest version of the terms of use that the user has accepted.
  *       examples: [
- *         { name: "alonzo", password: "lambda" }
+ *         { name: "alonzo", password: "lambda", tou: 1 }
  *       ]
  *
   *     UserFilteringSpec:

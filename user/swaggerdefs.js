@@ -26,6 +26,8 @@
  *         - name
  *         - password
  *         - tou
+ *         - email
+ *         - phonenumber
  *       properties:
  *         id:
  *           type: integer
@@ -44,10 +46,23 @@
  *           format: password
  *           description: No leading or trailing spaces. Never returned by an API.
  *         tou:
- *          type: integer
- *          minimum: 1
- *          readOnly: true
- *          description: The newest version of the terms of use that the user has accepted.
+ *           type: integer
+ *           minimum: 1
+ *           readOnly: true
+ *           description: The newest version of the terms of use that the user has accepted.
+ *         email: 
+ *           type: string
+ *           minLength: 4
+ *           maxLength: 32
+ *           pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+ *           description: User's email
+ *         phonenumber:
+ *           type: string
+ *           minLength: 10
+ *           maxLength: 16
+ *           pattern: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
+ *           description: User's phone number
+ * 
  *         uri:
  *           type: string
  *           readOnly: true
@@ -141,6 +156,8 @@
  *         - name
  *         - password
  *         - tou
+ *         - email
+ *         - phonenumber
  *       properties:
  *         name:
  *           type: string
@@ -155,10 +172,24 @@
  *           description: Guess. No leading or trailing spaces. Never returned by an API.
  *         tou:
  *           type: integer
- *           minimum: 1
+ *           minLength: 1
  *           description: The newest version of the terms of use that the user has accepted.
+ *         email:
+ *           type: string
+ *           minLength: 4
+ *           maxLength: 32
+ *           pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+ *           description: User's email
+ *         phonenumber:
+ *           type: string
+ *           minLength: 10
+ *           maxLength: 16
+ *           pattern: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
+ *           description: User's phone number
+ *         
+ * 
  *       examples: [
- *         { name: "alonzo", password: "lambda", tou: 1 }
+ *         { name: "alonzo", password: "lambda", tou: 1, email: "alonzo@gmail.com", phonenumber: "8008008000" }
  *       ]
  * 
  * 
@@ -169,6 +200,8 @@
  *         - name
  *         - password
  *         - tou
+ *         - email
+ *         - phonenumber
  *       properties:
  *         name:
  *           type: string
@@ -183,10 +216,23 @@
  *           description: Guess. No leading or trailing spaces. Never returned by an API. description Columns to sort by, separated by commas. Names are case-insensitive. Sorts are ascending unless a "-" is given. "+" is accepted but is unnecessary. Acceptable columns are id and name.
  *         tou: 
  *           type: integer
- *           minimum: 1
+ *           minlength: 1
  *           description: The newest version of the terms of use that the user has accepted. 
+ *         email: 
+ *           type: string
+ *           minLength: 4
+ *           maxLength: 32
+ *           pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+ *           description: User's email
+ *         phonenumber:
+ *           type: string
+ *           minLength: 10
+ *           maxLength: 16
+ *           pattern: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
+ *           description: User's phone number
+ * 
  *       examples: [
- *         { name: "alonzo", password: "lambda", tou: 1 }
+ *         { name: "alonzo", password: "lambda", tou: 1, email: "alonzo@gmail.com", phonenumber: "80080080000" }
  *         ]
  * 
  *     PatchingUser:
@@ -205,10 +251,22 @@
  *           description: Guess. No leading or trailing spaces. Never returned by an API.
  *         tou: 
  *           type: integer
- *           minimum: 1
+ *           minlength: 1
  *           description: The newest version of the terms of use that the user has accepted.
+ *         email:
+ *           type: string
+ *           minLength: 4
+ *           maxLength: 32
+ *           pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+ *           description: User's email
+ *         phonenumber:
+ *           type: string
+ *           minLength: 10
+ *           maxLength: 16
+ *           pattern: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
+ *           description: User's phone number
  *       examples: [
- *         { name: "alonzo", password: "lambda", tou: 1 }
+ *         { name: "alonzo", password: "lambda", tou: 1, email: alonzo@gmail.com, phonenumber: "8008008000" }
  *       ]
  *
   *     UserFilteringSpec:

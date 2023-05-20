@@ -7,6 +7,8 @@ db.exec(`CREATE TABLE IF NOT EXISTS users (
         name TEXT NOT NULL UNIQUE COLLATE NOCASE,
         password TEXT NOT NULL,
         tou INTEGER NULL, 
+        email TEXT NOT NULL,
+        phonenumber TEXT NOT NULL,
         versionkey INTEGER NOT NULL DEFAULT 1
     );`)
 db.exec(`CREATE TABLE IF NOT EXISTS users_result_sets (
